@@ -25,4 +25,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function () {
     return view('lugares');
-})->name('dashboard');
+})->name('lugares');
