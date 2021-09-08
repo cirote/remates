@@ -4,6 +4,14 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cirote/livewire-datatables.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -13,8 +21,8 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
-        "mediconesystems/livewire-datatables": "^0.6.3",
-        "overtrue/laravel-lang": "~5.0"
+        "overtrue/laravel-lang": "~5.0",
+        "cirote/livewire-datatables": "@dev"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -60,7 +68,5 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
