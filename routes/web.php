@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Actions\Remates\ImportarRemates;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function () {
     return view('lugares');
+})->name('lugares');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/importar', function () 
+{
+    ImportarRemates::do();
+
+    // return view('lugares');
+
 })->name('lugares');

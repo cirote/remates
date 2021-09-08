@@ -2,10 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Rematador extends Model
 {
-    use HasFactory;
+    protected $table = 'rematadores';
+
+    protected $guarded = [];
+
+    public static function byMatriculaOrCreate($atributtes)
+    {
+        if ($rematador = static::where('matricula', $atributtes['matricula'])->first())
+        {
+            return $rematador;
+        }
+
+        return static::create($atributtes);
+    }
 }

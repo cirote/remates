@@ -9,5 +9,5 @@ class Lugar extends Model
 {
     protected $table = 'lugares';
 
-    use HasFactory;
+    protected $guarded = [];
 }

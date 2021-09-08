@@ -15,15 +15,15 @@ class CreateRematesTable extends Migration
     {
         Schema::create('remates', function (Blueprint $table) {
             $table->id();
-            $table->integer('aviso');
-            $table->integer('año');
+            $table->string('aviso')->unique();
             $table->date('remate_fecha');
             $table->time('remate_hora');
             $table->date('publicacion_fecha');
+            $table->text('publicacion_url');
             $table->text('bien');
             $table->text('condiciones');
             $table->foreignId('lugar_id')->constrained('lugares')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('localidad_id')->constrained('localidades')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('localidad_id')->nullable()->constrained('localidades')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('rematador_id')->constrained('rematadores')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('interesante')->nullable()->default(null);
             $table->decimal('precio')->nullable()->default(null);

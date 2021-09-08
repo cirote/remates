@@ -15,12 +15,12 @@ class CreateRematadoresTable extends Migration
     {
         Schema::create('rematadores', function (Blueprint $table) {
             $table->id();
-            $table->integer('matricula');
+            $table->integer('matricula')->unique();
             $table->text('apellido');
             $table->text('nombre');
-            $table->text('web')->nullable();
-            $table->text('telefono')->nullable();
-            $table->json('domicilio')->nullable();
+            $table->text('web')->nullable()->default(null);
+            $table->text('telefono')->nullable()->default(null);
+            $table->json('domicilio')->nullable()->default(null);
             $table->timestamps();
         });
     }

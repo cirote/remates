@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Remate extends Model
 {
-    use HasFactory;
+    protected $table = 'remates';
+
+    protected $guarded = [];
+
+    public static function byAvisoOrCreate($atributtes)
+    {
+        if ($remate = static::where('aviso', $atributtes['aviso'])->first())
+        {
+            return $remate;
+        }
+
+        return static::create($atributtes);
+    }
 }
