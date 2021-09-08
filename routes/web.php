@@ -28,6 +28,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function () {
     return view('lugares');
 })->name('lugares');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/remates', function () {
+    return view('remates');
+})->name('remates');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/importar', function () 
 {
     ImportarRemates::do();
