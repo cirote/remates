@@ -14,15 +14,16 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.3|^8.0",
+        "cirote/livewire-datatables": "@dev",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
+        "imangazaliev/didom": "^1.18",
         "laravel/framework": "^8.54",
         "laravel/jetstream": "^2.3",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
-        "overtrue/laravel-lang": "~5.0",
-        "cirote/livewire-datatables": "@dev"
+        "overtrue/laravel-lang": "~5.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
