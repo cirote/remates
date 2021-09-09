@@ -20,4 +20,9 @@ class Remate extends Model
 
         return static::create($atributtes);
     }
+
+    public function lugar($query)
+    {
+        return $this->hasOne(Lugar::class);
+    }
 }

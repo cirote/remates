@@ -104,7 +104,10 @@ class ImportarRemates
 
         if (! Str::contains($bien, 'Bien inmueble'))
         {
-            return null;
+            if (! Str::contains($bien, 'Bienes inmuebles'))
+            {
+                return null;
+            }
         }
 
         list($rematador, $matricula) = explode(', ', trim(str_replace('Rematador - ', '', $infoRow[2]->text())));
