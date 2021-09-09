@@ -36,6 +36,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/importar', function ()
 {
     ImportarRemates::do();
 
-    // return view('lugares');
+    return redirect('/remates');
 
-})->name('lugares');
+})->name('importar');

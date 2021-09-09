@@ -15,7 +15,10 @@ class RemateTable extends LivewireDatatable
 
     public function builder()
     {
-        return Remate::query()->leftJoin('lugares', 'lugares.id', 'remates.lugar_id')->where('descartado', false);
+        return Remate::query()
+            ->leftJoin('lugares', 'lugares.id', 'remates.lugar_id')
+            ->leftJoin('rematadores', 'rematadores.id', 'remates.rematador_id')
+            ->where('descartado', false);
     }
     
     public function columns()
@@ -31,17 +34,19 @@ class RemateTable extends LivewireDatatable
 
             Column::name('condiciones')->label('condiciones del remate')->searchable(),
 
-            BooleanColumn::name('interesante'),
+            BooleanColumn::name('interesante')->label('ok'),
 
             Column::name('lugares.nombre')->label('lugar'),
 
+            Column::name('rematadores.apellido')->label('rematador'),
+
             // BooleanColumn::name('descartado'),
 
-            Column::callback(['id', 'bien'], function ($id, $bien) 
-                {
-                    return view('table-actions', ['id' => $id, 'nombre' => $bien]);
-                }
-            )->unsortable()
+            // Column::callback(['id', 'bien'], function ($id, $bien) 
+            //     {
+            //         return view('table-actions', ['id' => $id, 'nombre' => $bien]);
+            //     }
+            // )->unsortable()
         ];
     }
 
