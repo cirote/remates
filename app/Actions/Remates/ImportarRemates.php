@@ -110,7 +110,22 @@ class ImportarRemates
             }
         }
 
-        list($rematador, $matricula) = explode(', ', trim(str_replace('Rematador - ', '', $infoRow[2]->text())));
+        $datos_rematador = explode(' y ', trim(str_replace('Rematador - ', '', $infoRow[2]->text())))[0];
+
+        $datos_rematador = str_replace(' mat. N ', ', mat. N ', $datos_rematador);
+
+        $datos_rematador = str_replace(',,', ',', $datos_rematador);
+
+        $datos_rematador = explode(', ', trim(str_replace('Rematador - ', '', $datos_rematador)));
+
+        if (count($datos_rematador) != 2)
+        {
+            dump($infoRow[2]->text());
+
+            dd($datos_rematador);
+        }
+
+        list($rematador, $matricula) = $datos_rematador;
 
         $fechaRow = $remate->find('.cfecha');
 
