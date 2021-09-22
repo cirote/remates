@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Remate;
+use Illuminate\Support\Carbon;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use App\Models\Remate;
 
 class RemateTable extends LivewireDatatable
 {
@@ -18,14 +19,19 @@ class RemateTable extends LivewireDatatable
         return Remate::query()
             ->leftJoin('lugares', 'lugares.id', 'remates.lugar_id')
             ->leftJoin('rematadores', 'rematadores.id', 'remates.rematador_id')
-            ->where('descartado', false);
+            ->where('descartado', false)
+            ->where('remate_fecha', '>=',date('Y-m-d') );
     }
     
     public function columns()
     {
         return [
-            DateColumn::name('remate_fecha')->defaultSort('asc'),
-
+            Column::callback(['remate_fecha', 'remate_hora'], function ($remate_fecha, $remate_hora) 
+                {
+                    return Carbon::parse($remate_fecha)->format('d/m/Y') . ' ' . substr($remate_hora, 0, 5);
+                }
+            )->label('fecha remate')->defaultSort('asc'),
+            
             DateColumn::name('publicacion_fecha'),
 
             DateColumn::name('created_at')->label('fecha de creación'),
@@ -38,15 +44,7 @@ class RemateTable extends LivewireDatatable
 
             Column::name('lugares.nombre')->label('lugar'),
 
-            Column::name('rematadores.apellido')->label('rematador'),
-
-            // BooleanColumn::name('descartado'),
-
-            // Column::callback(['id', 'bien'], function ($id, $bien) 
-            //     {
-            //         return view('table-actions', ['id' => $id, 'nombre' => $bien]);
-            //     }
-            // )->unsortable()
+            Column::name('rematadores.apellido')->label('rematador')
         ];
     }
 
