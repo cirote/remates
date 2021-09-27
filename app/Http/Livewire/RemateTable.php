@@ -44,12 +44,21 @@ class RemateTable extends LivewireDatatable
 
             Column::name('lugares.nombre')->label('lugar'),
 
-            Column::name('rematadores.apellido')->label('rematador')
+            Column::callback('rematadores.apellido,rematadores.nombre,rematadores.telefono', function ($apellido, $nombre) 
+                {
+                    $telefono = '';
+
+                    return $apellido . ', ' . $nombre . '<br>' . $telefono;
+                },
+                ['apellido', 'nombre', 'telefono']
+            )->label('rematador')
         ];
     }
 
-    public function getLugarProperty()
+    public function veamos($apellido, $nombre)
     {
-        return Lugar::all();
+        $telefono = '';
+
+        return $apellido . ', ' . $nombre . '<br>' . $telefono;
     }
 }
