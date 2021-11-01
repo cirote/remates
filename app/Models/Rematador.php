@@ -19,4 +19,9 @@ class Rematador extends Model
 
         return static::create($atributtes);
     }
+
+    public function getNombreCompletoAttribute()
+    {
+        return $this->apellido . ', ' . $this->nombre;
+    }
 }

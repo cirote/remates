@@ -11,6 +11,8 @@ class Remate extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['remate_fecha', 'publicacion_fecha', 'created_at'];
+
     public static function byAvisoOrCreate($atributtes)
     {
         if ($remate = static::where('aviso', $atributtes['aviso'])->first())
@@ -21,8 +23,13 @@ class Remate extends Model
         return static::create($atributtes);
     }
 
-    public function lugar($query)
+    public function lugar()
     {
-        return $this->hasOne(Lugar::class);
+        return $this->belongsTo(Lugar::class);
+    }
+
+    public function rematador()
+    {
+        return $this->belongsTo(Rematador::class);
     }
 }

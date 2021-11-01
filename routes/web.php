@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Actions\Remates\ImportarRemates;
+use App\Http\Livewire\Remates\Show as RematesShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +19,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () 
+{
     return view('dashboard');
+
 })->name('dashboard');
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function () 
+{
     return view('lugares');
+
 })->name('lugares');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/remates', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/remates', function () 
+{
     return view('remates');
+
 })->name('remates');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/rema', RematesShow::class)->name('rema');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/importar', function () 
 {
