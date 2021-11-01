@@ -33,13 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/lugares', function ()
 
 })->name('lugares');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/remates', function () 
-{
-    return view('remates');
-
-})->name('remates');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/rema', RematesShow::class)->name('rema');
+Route::middleware(['auth:sanctum', 'verified'])->get('/remates', RematesShow::class)->name('remates');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/importar', function () 
 {
