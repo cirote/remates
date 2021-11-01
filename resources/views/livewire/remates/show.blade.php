@@ -65,10 +65,10 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-900">
-                                            @if($remate->interesante)
-                                            <b>{{ $remate->bien }}</b>
+                                            @if ($remate->interesante)
+                                                <b>{{ $remate->bien }}</b>
                                             @else
-                                            {{ $remate->bien }}
+                                                {{ $remate->bien }}
                                             @endif
                                             <a target="_blank" href="{{ $remate->publicacion_url }}">
                                                 (link)
@@ -97,14 +97,16 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         @unless($remate->interesante)
-                                        <div class="inline-flex">
-                                            <button wire:click="descartar({{ $remate->id }})" class="m-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                                Descartar
-                                            </button> 
-                                            <button wire:click="interesar({{ $remate->id }})" class="m-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                                Interesante
-                                            </button>
-                                        </div>
+                                            <div class="inline-flex">
+                                                <button wire:click="descartar({{ $remate->id }})"
+                                                    class="m-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                                                    Descartar
+                                                </button>
+                                                <button wire:click="interesar({{ $remate->id }})"
+                                                    class="m-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                                                    Interesante
+                                                </button>
+                                            </div>
                                         @endunless
                                     </td>
                                 </tr>

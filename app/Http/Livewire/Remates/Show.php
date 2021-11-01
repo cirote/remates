@@ -11,8 +11,7 @@ class Show extends Component
     {
         $remates = Remate::where('descartado', false)->where('remate_fecha', '>=', date('Y-m-d'))->get();
 
-        return view('livewire.remates.show')
-            ->with('remates', $remates);
+        return view('livewire.remates.show')->with('remates', $remates);
     }
 
     public function descartar(Remate $remate)
