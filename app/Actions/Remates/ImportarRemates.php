@@ -120,12 +120,15 @@ class ImportarRemates
 
         if (count($datos_rematador) != 2)
         {
-            dump($infoRow[2]->text());
+            $rematador = $datos_rematador[0];
 
-            dd($datos_rematador);
+            $matricula = substr(trim(str_replace('mat. N ', '', $datos_rematador[1])), 0, strpos($datos_rematador[1], ' '));
         }
 
-        list($rematador, $matricula) = $datos_rematador;
+        else
+        {
+            list($rematador, $matricula) = $datos_rematador;
+        }
 
         $fechaRow = $remate->find('.cfecha');
 
