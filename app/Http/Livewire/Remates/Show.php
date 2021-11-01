@@ -7,8 +7,6 @@ use App\Models\Remate;
 
 class Show extends Component
 {
-    protected $listeners = ['descartar'];
-
     public function render()
     {
         $remates = Remate::where('descartado', false)->where('remate_fecha', '>=', date('Y-m-d'))->get();
