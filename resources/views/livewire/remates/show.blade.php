@@ -87,7 +87,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <div class="text-sm text-gray-900">
-                                            <a target="_blank" href="{{ $remate->rematador->web }}">
+                                            <a target="_blank" href="https:\\{{ $remate->rematador->web }}">
                                                 {{ $remate->rematador->nombre_completo }}
                                             </a>
                                         </div>

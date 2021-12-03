@@ -112,7 +112,7 @@ class ImportarRemates
 
         $datos_rematador = explode(' y ', trim(str_replace('Rematador - ', '', $infoRow[2]->text())))[0];
 
-        $datos_rematador = str_replace(' mat. N ', ', mat. N ', $datos_rematador);
+        $datos_rematador = str_replace([' mat. N ', ',mat. N '], [', mat. N ', ', mat. N '], $datos_rematador);
 
         $datos_rematador = str_replace(',,', ',', $datos_rematador);
 
@@ -121,6 +121,8 @@ class ImportarRemates
         if (count($datos_rematador) != 2)
         {
             $rematador = $datos_rematador[0];
+
+            // dd($infoRow[2]->text());
 
             $matricula = substr(trim(str_replace('mat. N ', '', $datos_rematador[1])), 0, strpos($datos_rematador[1], ' '));
         }
