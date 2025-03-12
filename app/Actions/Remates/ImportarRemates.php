@@ -122,9 +122,15 @@ class ImportarRemates
         {
             $rematador = $datos_rematador[0];
 
-            // dd($infoRow[2]->text());
-
-            $matricula = substr(trim(str_replace('mat. N ', '', $datos_rematador[1])), 0, strpos($datos_rematador[1], ' '));
+            if (isset($datos_rematador[1])) 
+            {
+                $matricula = substr(trim(str_replace('mat. N ', '', $datos_rematador[1])), 0, strpos($datos_rematador[1], ' '));
+            } 
+            
+            else 
+            {
+                $matricula = null; 
+            }
         }
 
         else
